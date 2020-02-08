@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://zeba1:zeba1@react-redux-connector-btltn.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "noSecret"
+}
