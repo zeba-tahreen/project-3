@@ -1,10 +1,10 @@
 import React, { Fragment, useState, Profiler } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
 
-const Login = ({ login }) => {
+const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -20,12 +20,18 @@ const Login = ({ login }) => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    login(email, password);
+    login({email, password});
+  };
+
+  // Redirect if logged in
+
+  if(isAuthenticated){
+    return <Redirect to='/dashboard' />
   };
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Sign Ip</h1>
+      <h1 className='large text-primary'>Sign In</h1>
       <p className='lead'>
         <i className='fas fa-user'></i> Sign Into Your Account
       </p>
@@ -61,9 +67,14 @@ const Login = ({ login }) => {
 };
 
 Login.propTypes = {
-  login: PropTypes.func.isRequired
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
 }
 
-export default connect(null, {
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, {
   login
 })(Login);
