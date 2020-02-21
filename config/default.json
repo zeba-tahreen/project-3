@@ -1,6 +1,5 @@
 {
     "mongoURI": "mongodb+srv://zeba1:zeba1@react-redux-connector-btltn.mongodb.net/test?retryWrites=true&w=majority",
     "jwtSecret": "noSecret",
-    "githubClientId":"bf58e808baa3ce6f4475",
-    "githubSecret":"91e606edb3d1e6eeb236c62ebd069064f56bd9b6"
+    "githubToken": ""
 }
