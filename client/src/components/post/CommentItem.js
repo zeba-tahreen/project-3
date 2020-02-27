@@ -8,7 +8,8 @@ import { deleteComment } from '../../actions/post';
 const CommentItem = ({
   postId,
   comment: { _id, text, name, avatar, user, date },
-  auth
+  auth,
+  deleteComment
 }) => (
   <div className='post bg-white p-1 my-1'>
     <div>
@@ -20,7 +21,7 @@ const CommentItem = ({
     <div>
       <p className='my-1'>{text}</p>
       <p className='post-date'>
-        Posted on <Moment format='YYYY/MM/DD'>{date} </Moment>
+        Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
       </p>
       {!auth.loading && user === auth.user._id && (
         <button
@@ -36,7 +37,7 @@ const CommentItem = ({
 );
 
 CommentItem.propTypes = {
-  postId: PropTypes.number.isRequired,
+  postId: PropTypes.string.isRequired,
   comment: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
   deleteComment: PropTypes.func.isRequired
