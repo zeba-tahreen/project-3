@@ -11,19 +11,22 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
     getPosts();
   }, [getPosts]);
 
-  return loading ? <Spinner /> : <Fragment>
+  return loading ? (
+    <Spinner />
+  ) : (
+    <Fragment>
       <h1 className='large text-primary'>Posts</h1>
       <p className='lead'>
-      <i className='fas fa-user'></i> Welcome to the Coummunity
+        <i className='fas fa-user'></i> Welcome to the Coummunity
       </p>
-    
-          <PostForm />
-          <div className='posts'>
-              {posts.map(post =>(
-                  <PostItem key={post._id} post={post} />
-              ))}
-          </div>
-  </Fragment>;
+      <PostForm />
+      <div className='posts'>
+        {posts.map(post => (
+          <PostItem key={post._id} post={post} />
+        ))}
+      </div>
+    </Fragment>
+  );
 };
 
 Posts.propTypes = {
